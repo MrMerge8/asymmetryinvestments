@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asymmetry Investments — Exposure to the future</title>
+  <meta name="description" content="Asymmetry Investments — an investment vehicle building funds and strategies for the technologies defining the next era." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Asymmetry Investments" />
+  <meta property="og:description" content="Exposure to the future." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://asymmetryinvestments.com" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050608'/%3E%3Cpath d='M16 6 L26 26 L6 26 Z' fill='none' stroke='%23e8ecf4' stroke-width='2'/%3E%3C/svg%3E" />
+
+  <style>
+    :root {
+      --bg: #050608;
+      --bg-soft: #0a0d12;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.14);
+      --ink: #f3f5fa;
+      --ink-dim: #9aa3b2;
+      --ink-faint: #5a626f;
+      --accent: #6ea8ff;
+      --accent-2: #b388ff;
+      --maxw: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Ambient background field */
+    .field {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(900px 600px at 70% -10%, rgba(110, 168, 255, 0.10), transparent 60%),
+        radial-gradient(700px 500px at 10% 110%, rgba(179, 136, 255, 0.08), transparent 60%),
+        var(--bg);
+    }
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+      -webkit-mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+      opacity: 0.5;
+    }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(5, 6, 8, 0.75), rgba(5, 6, 8, 0));
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .brand svg { display: block; }
+    .nav-cta {
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      color: var(--ink-dim);
+      text-decoration: none;
+      padding: 9px 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .nav-cta:hover { color: var(--ink); border-color: var(--ink-dim); background: rgba(255,255,255,0.03); }
+
+    /* Hero */
+    .hero { padding: 132px 0 96px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin-bottom: 30px;
+    }
+    .eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px 2px rgba(110, 168, 255, 0.6);
+    }
+    h1 {
+      font-size: clamp(44px, 8vw, 92px);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+      max-width: 16ch;
+    }
+    h1 .grad {
+      background: linear-gradient(100deg, var(--ink) 10%, var(--accent) 55%, var(--accent-2) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .lede {
+      margin-top: 30px;
+      max-width: 54ch;
+      font-size: clamp(16px, 2.2vw, 19px);
+      color: var(--ink-dim);
+      line-height: 1.6;
+    }
+    .hero-actions { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      padding: 14px 26px;
+      border-radius: 999px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn-primary {
+      color: #05060a;
+      background: linear-gradient(100deg, #ffffff, #d7e3ff);
+      font-weight: 600;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px -12px rgba(110, 168, 255, 0.55); }
+    .btn-ghost { color: var(--ink-dim); border: 1px solid var(--line-strong); }
+    .btn-ghost:hover { color: var(--ink); border-color: var(--ink-dim); }
+
+    /* Section heading */
+    .sec { padding: 24px 0 110px; }
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 0;
+    }
+    .sec-head h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .sec-head p { color: var(--ink-faint); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; }
+
+    /* Portfolio grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-left: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+    }
+    .card {
+      position: relative;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 40px 34px 36px;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(380px 220px at var(--mx, 50%) var(--my, 0%), rgba(110, 168, 255, 0.10), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+    .card:hover { background: rgba(255, 255, 255, 0.015); }
+    .card:hover::before { opacity: 1; }
+
+    .logo {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      color: var(--ink);
+      filter: grayscale(1) brightness(1.6);
+      opacity: 0.92;
+      transition: opacity 0.3s ease, filter 0.3s ease;
+    }
+    .card:hover .logo { opacity: 1; filter: none; }
+    .logo svg { height: 100%; width: auto; display: block; }
+
+    .card .meta { margin-top: 28px; }
+    .card .name {
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 6px;
+    }
+    .card .desc { font-size: 15px; color: var(--ink-dim); line-height: 1.45; }
+
+    /* Closing / contact */
+    .contact {
+      border-top: 1px solid var(--line);
+      padding: 96px 0 0;
+      text-align: center;
+    }
+    .contact h2 {
+      font-size: clamp(30px, 5.5vw, 56px);
+      letter-spacing: -0.025em;
+      font-weight: 600;
+      line-height: 1.02;
+    }
+    .contact p { margin: 22px auto 38px; max-width: 46ch; color: var(--ink-dim); font-size: 17px; }
+    .mailto {
+      font-size: clamp(18px, 3vw, 26px);
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line-strong);
+      padding-bottom: 4px;
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+    .mailto:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer {
+      margin-top: 110px;
+      border-top: 1px solid var(--line);
+      padding: 34px 0;
+    }
+    .foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--ink-faint);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+    .foot .disc { max-width: 62ch; line-height: 1.5; }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 96px 0 72px; }
+      .sec-head p { display: none; }
+    }
+    @media (max-width: 540px) {
+      .grid { grid-template-columns: 1fr; }
+      .nav-cta { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="field"></div>
+  <div class="grid-overlay"></div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Asymmetry Investments home">
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 5 L27 27 L5 27 Z" stroke="#e8ecf4" stroke-width="1.6" />
+          <path d="M16 5 L16 27" stroke="#6ea8ff" stroke-width="1.6" />
+        </svg>
+        Asymmetry
+      </a>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow reveal"><span class="dot"></span>Asymmetry Investments</span>
+        <h1 class="reveal">Exposure to <span class="grad">the future.</span></h1>
+        <p class="lede reveal">
+          An investment vehicle for the companies redefining the next era — space, money,
+          and intelligent machines. We build the funds and strategies that put the future
+          within reach.
+        </p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="#contact">Get in touch
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#portfolio">View portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="sec" id="portfolio">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2>Select early positions</h2>
+          <p>Held via Asymmetry</p>
+        </div>
+
+        <div class="grid">
+          <!-- SpaceX -->
+          <article class="card reveal">
+            <div class="logo">
+              <svg viewBox="0 0 220 26" role="img" aria-label="SpaceX">
+                <text x="0" y="20" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="currentColor">SPACE</text>
+                <text x="118" y="20" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="currentColor" font-style="italic">X</text>
+              </svg>
+            </div>
+            <div class="meta">
+              <div class="name">SpaceX</div>
+              <div class="desc">Space access &amp; orbital infrastructure.</div>
+            </div>
+          </article>
+
+          <!-- Tether -->
+          <article class="card reveal">
+            <div class="logo">
+              <svg viewBox="0 0 200 26" role="img" aria-label="Tether">
+                <circle cx="13" cy="13" r="12" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M13 6.5v13M8.5 9.2h9M13 9.2v0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <text x="34" y="20" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="600" letter-spacing="1.5" fill="currentColor">Tether</text>
+              </svg>
+            </div>
+            <div class="meta">
+              <div class="name">Tether</div>
+              <div class="desc">Digital dollars &amp; stablecoin rails.</div>
+            </div>
+          </article>
+
+          <!-- Revolut -->
+          <article class="card reveal">
+            <div class="logo">
+              <svg viewBox="0 0 200 26" role="img" aria-label="Revolut">
+                <text x="0" y="20" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="700" letter-spacing="0.5" fill="currentColor">Revolut</text>
+              </svg>
+            </div>
+            <div class="meta">
+              <div class="name">Revolut</div>
+              <div class="desc">Global consumer finance super-app.</div>
+            </div>
+          </article>
+
+          <!-- Monzo -->
+          <article class="card reveal">
+            <div class="logo">
+              <svg viewBox="0 0 200 26" role="img" aria-label="Monzo">
+                <text x="0" y="20" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" letter-spacing="0.5" fill="currentColor">monzo</text>
+              </svg>
+            </div>
+            <div class="meta">
+              <div class="name">Monzo</div>
+              <div class="desc">Digital-native retail banking.</div>
+            </div>
+          </article>
+
+          <!-- Figure -->
+          <article class="card reveal">
+            <div class="logo">
+              <svg viewBox="0 0 220 26" role="img" aria-label="Figure">
+                <text x="0" y="20" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="500" letter-spacing="4" fill="currentColor">FIGURE</text>
+              </svg>
+            </div>
+            <div class="meta">
+              <div class="name">Figure</div>
+              <div class="desc">Humanoid robotics &amp; embodied AI.</div>
+            </div>
+          </article>
+
+          <!-- Mercury -->
+          <article class="card reveal">
+            <div class="logo">
+              <svg viewBox="0 0 220 26" role="img" aria-label="Mercury">
+                <circle cx="12" cy="13" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M12 20v4M9 23h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <text x="30" y="20" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" letter-spacing="0.5" fill="currentColor">Mercury</text>
+              </svg>
+            </div>
+            <div class="meta">
+              <div class="name">Mercury</div>
+              <div class="desc">Banking built for technology companies.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <h2 class="reveal">Invest in what comes next.</h2>
+        <p class="reveal">
+          Asymmetry partners with a select group of investors. For access to current and
+          future strategies, reach out directly.
+        </p>
+        <a class="mailto reveal" href="mailto:invest@asymmetryinvestments.com">invest@asymmetryinvestments.com</a>
+      </div>
+
+      <footer>
+        <div class="wrap foot">
+          <span>© <span id="year"></span> Asymmetry Investments</span>
+          <span class="disc">
+            For informational purposes only. Not an offer or solicitation to buy or sell any
+            security. Company names and marks are the property of their respective owners.
+          </span>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = Math.min(i * 45, 240) + 'ms';
+      io.observe(el);
+    });
+
+    // Pointer-tracked glow on portfolio cards
+    document.querySelectorAll('.card').forEach((card) => {
+      card.addEventListener('pointermove', (ev) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((ev.clientX - r.left) / r.width * 100) + '%');
+        card.style.setProperty('--my', ((ev.clientY - r.top) / r.height * 100) + '%');
+      });
+    });
+  </script>
+</body>
+</html>
