@@ -4,435 +4,377 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Asymmetry Investments — Exposure to the future</title>
-  <meta name="description" content="Asymmetry Investments — an investment vehicle building funds and strategies for the technologies defining the next era." />
+  <meta name="description" content="Asymmetry Investments — a private investment vehicle backing the companies redefining space, money, and intelligent machines. Engineered for asymmetric upside." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Asymmetry Investments" />
-  <meta property="og:description" content="Exposure to the future." />
+  <meta property="og:description" content="Exposure to the future. Bounded downside, unbounded upside." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://asymmetryinvestments.com" />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050608'/%3E%3Cpath d='M16 6 L26 26 L6 26 Z' fill='none' stroke='%23e8ecf4' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..560;1,9..144,300..460&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23090a0c'/%3E%3Cpath d='M5 25 Q20 24 27 7' fill='none' stroke='%23ECE9E2' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='27' cy='7' r='2.4' fill='%2392c6ff'/%3E%3C/svg%3E" />
 
   <style>
     :root {
-      --bg: #050608;
-      --bg-soft: #0a0d12;
-      --line: rgba(255, 255, 255, 0.08);
-      --line-strong: rgba(255, 255, 255, 0.14);
-      --ink: #f3f5fa;
-      --ink-dim: #9aa3b2;
-      --ink-faint: #5a626f;
-      --accent: #6ea8ff;
-      --accent-2: #b388ff;
-      --maxw: 1180px;
+      --bg:        #08090b;
+      --bg-2:      #0c0d10;
+      --ink:       #ECE9E2;
+      --ink-dim:   #918d84;
+      --ink-faint: #56544e;
+      --line:      rgba(236, 233, 226, 0.10);
+      --line-soft: rgba(236, 233, 226, 0.055);
+      --cool:      #92c6ff;
+      --warm:      #ffd7a3;
+      --maxw:      1200px;
+
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       line-height: 1.5;
       overflow-x: hidden;
     }
 
-    /* Ambient background field */
+    /* Ambient + texture layers */
     .field {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
+      position: fixed; inset: 0; z-index: -2;
       background:
-        radial-gradient(900px 600px at 70% -10%, rgba(110, 168, 255, 0.10), transparent 60%),
-        radial-gradient(700px 500px at 10% 110%, rgba(179, 136, 255, 0.08), transparent 60%),
+        radial-gradient(1100px 720px at 78% -8%, rgba(146, 198, 255, 0.07), transparent 62%),
+        radial-gradient(820px 620px at 6% 108%, rgba(255, 215, 163, 0.05), transparent 60%),
         var(--bg);
     }
-    .grid-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background-image:
-        linear-gradient(var(--line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
-      -webkit-mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
-      opacity: 0.5;
+    .grain {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      opacity: 0.04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+    .mono {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
 
     /* Header */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(5, 6, 8, 0.75), rgba(5, 6, 8, 0));
-      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(8, 9, 11, 0.72), rgba(8, 9, 11, 0));
+      border-bottom: 1px solid var(--line-soft);
     }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+    .brand { display: flex; align-items: center; gap: 13px; text-decoration: none; color: var(--ink); }
+    .brand .mark { width: 26px; height: 26px; display: block; }
+    .brand .wordmark {
+      font-family: var(--serif);
+      font-weight: 460;
+      font-size: 19px;
+      letter-spacing: 0.01em;
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      font-size: 13px;
-      text-transform: uppercase;
-      color: var(--ink);
-      text-decoration: none;
-    }
-    .brand svg { display: block; }
+    .brand .wordmark em { font-style: italic; font-weight: 360; }
     .nav-cta {
-      font-size: 13px;
-      letter-spacing: 0.05em;
-      color: var(--ink-dim);
-      text-decoration: none;
-      padding: 9px 16px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      font-family: var(--mono);
+      font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-dim); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border: 1px solid var(--line); border-radius: 2px;
+      transition: color .25s ease, border-color .25s ease, background .25s ease;
     }
-    .nav-cta:hover { color: var(--ink); border-color: var(--ink-dim); background: rgba(255,255,255,0.03); }
+    .nav-cta:hover { color: var(--ink); border-color: var(--ink-dim); background: rgba(236,233,226,0.03); }
+    .nav-cta .ar { transition: transform .25s ease; }
+    .nav-cta:hover .ar { transform: translateX(3px); }
 
     /* Hero */
-    .hero { padding: 132px 0 96px; }
-    .eyebrow {
-      display: inline-flex;
+    .hero { padding: clamp(72px, 12vw, 150px) 0 clamp(64px, 9vw, 120px); }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: clamp(36px, 6vw, 88px);
       align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--ink-dim);
-      margin-bottom: 30px;
     }
+    .eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 32px; }
     .eyebrow .dot {
       width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px 2px rgba(110, 168, 255, 0.6);
+      background: var(--cool); box-shadow: 0 0 14px 2px rgba(146, 198, 255, 0.55);
     }
     h1 {
-      font-size: clamp(44px, 8vw, 92px);
-      line-height: 0.98;
-      letter-spacing: -0.03em;
-      font-weight: 600;
-      max-width: 16ch;
+      font-family: var(--serif);
+      font-weight: 360;
+      font-size: clamp(46px, 7.4vw, 104px);
+      line-height: 0.96;
+      letter-spacing: -0.018em;
     }
-    h1 .grad {
-      background: linear-gradient(100deg, var(--ink) 10%, var(--accent) 55%, var(--accent-2) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    h1 em {
+      font-style: italic; font-weight: 320;
+      background: linear-gradient(96deg, var(--ink) 6%, var(--cool) 60%, var(--warm) 104%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
     .lede {
-      margin-top: 30px;
-      max-width: 54ch;
-      font-size: clamp(16px, 2.2vw, 19px);
-      color: var(--ink-dim);
-      line-height: 1.6;
+      margin-top: 30px; max-width: 46ch;
+      font-size: clamp(16px, 1.4vw, 18.5px);
+      color: var(--ink-dim); line-height: 1.62;
     }
-    .hero-actions { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-actions { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      letter-spacing: 0.01em;
-      text-decoration: none;
-      padding: 14px 26px;
-      border-radius: 999px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--mono);
+      font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      text-decoration: none; padding: 15px 26px; border-radius: 2px;
+      transition: transform .25s ease, box-shadow .25s ease, color .25s ease, border-color .25s ease, background .25s ease;
     }
-    .btn-primary {
-      color: #05060a;
-      background: linear-gradient(100deg, #ffffff, #d7e3ff);
-      font-weight: 600;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px -12px rgba(110, 168, 255, 0.55); }
-    .btn-ghost { color: var(--ink-dim); border: 1px solid var(--line-strong); }
+    .btn .ar { transition: transform .25s ease; }
+    .btn:hover .ar { transform: translateX(3px); }
+    .btn-primary { color: #0a0b0d; background: linear-gradient(100deg, #ffffff, #e8e4da); font-weight: 500; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 46px -16px rgba(146, 198, 255, 0.5); }
+    .btn-ghost { color: var(--ink-dim); border: 1px solid var(--line); }
     .btn-ghost:hover { color: var(--ink); border-color: var(--ink-dim); }
 
-    /* Section heading */
-    .sec { padding: 24px 0 110px; }
-    .sec-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 24px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 0;
-    }
-    .sec-head h2 {
-      font-size: clamp(22px, 3vw, 30px);
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-    .sec-head p { color: var(--ink-faint); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; }
-
-    /* Portfolio grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-left: 1px solid var(--line);
-      border-top: 1px solid var(--line);
-    }
-    .card {
+    /* Convexity instrument panel */
+    .panel {
       position: relative;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 40px 34px 36px;
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: linear-gradient(180deg, rgba(236,233,226,0.018), rgba(236,233,226,0));
+      padding: 20px;
       overflow: hidden;
-      transition: background 0.3s ease;
     }
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(380px 220px at var(--mx, 50%) var(--my, 0%), rgba(110, 168, 255, 0.10), transparent 70%);
-      opacity: 0;
-      transition: opacity 0.35s ease;
-      pointer-events: none;
+    .panel-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 8px;
     }
-    .card:hover { background: rgba(255, 255, 255, 0.015); }
-    .card:hover::before { opacity: 1; }
+    .panel-head .live { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-dim); }
+    .panel-head .live .pulse {
+      width: 5px; height: 5px; border-radius: 50%; background: var(--cool);
+      box-shadow: 0 0 10px 1px rgba(146,198,255,0.7);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+    .canvas-frame { position: relative; aspect-ratio: 16 / 11; width: 100%; }
+    canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .axis {
+      position: absolute; font-family: var(--mono);
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-faint); pointer-events: none;
+    }
+    .axis.dl { left: 4px; bottom: 6px; }
+    .axis.ur { right: 4px; top: 6px; color: var(--cool); opacity: 0.8; }
+    .panel-foot {
+      margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line-soft);
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em;
+      color: var(--ink-dim); text-transform: none;
+    }
+    .panel-foot b { color: var(--ink); font-weight: 500; }
 
-    .logo {
-      height: 30px;
-      display: flex;
+    /* Ledger */
+    .sec { padding: clamp(40px, 7vw, 88px) 0; }
+    .sec-head {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 24px;
+      padding-bottom: 26px; border-bottom: 1px solid var(--line);
+    }
+    .sec-head h2 { font-family: var(--serif); font-weight: 380; font-size: clamp(22px, 3vw, 32px); letter-spacing: -0.01em; }
+
+    .ledger { list-style: none; }
+    .row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 56px 1fr auto 34px;
       align-items: center;
-      color: var(--ink);
-      filter: grayscale(1) brightness(1.6);
-      opacity: 0.92;
-      transition: opacity 0.3s ease, filter 0.3s ease;
+      gap: 20px;
+      padding: clamp(20px, 2.6vw, 30px) 8px;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none; color: inherit;
+      transition: padding-left .35s cubic-bezier(.22,.61,.36,1), background .35s ease;
     }
-    .card:hover .logo { opacity: 1; filter: none; }
-    .logo svg { height: 100%; width: auto; display: block; }
+    .row::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(180deg, var(--cool), var(--warm));
+      transform: scaleY(0); transform-origin: top; transition: transform .4s cubic-bezier(.22,.61,.36,1);
+    }
+    .row:hover { background: linear-gradient(90deg, rgba(236,233,226,0.022), transparent 70%); padding-left: 22px; }
+    .row:hover::before { transform: scaleY(1); }
+    .row .idx { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.1em; }
+    .row .co {
+      font-family: var(--serif); font-weight: 380;
+      font-size: clamp(26px, 4vw, 44px); letter-spacing: -0.015em;
+      line-height: 1; color: var(--ink);
+      transition: color .3s ease;
+    }
+    .row .sct {
+      font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-dim); text-align: right; white-space: nowrap;
+    }
+    .row .go {
+      justify-self: end; color: var(--ink-faint);
+      transition: color .3s ease, transform .35s cubic-bezier(.22,.61,.36,1);
+    }
+    .row:hover .co { color: #fff; }
+    .row:hover .go { color: var(--cool); transform: translate(3px, -3px); }
 
-    .card .meta { margin-top: 28px; }
-    .card .name {
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 6px;
-    }
-    .card .desc { font-size: 15px; color: var(--ink-dim); line-height: 1.45; }
-
-    /* Closing / contact */
-    .contact {
-      border-top: 1px solid var(--line);
-      padding: 96px 0 0;
-      text-align: center;
-    }
+    /* Contact */
+    .contact { padding: clamp(64px, 10vw, 132px) 0 0; text-align: center; }
+    .contact .kicker { display: block; margin-bottom: 26px; }
     .contact h2 {
-      font-size: clamp(30px, 5.5vw, 56px);
-      letter-spacing: -0.025em;
-      font-weight: 600;
-      line-height: 1.02;
+      font-family: var(--serif); font-weight: 350;
+      font-size: clamp(34px, 6.4vw, 76px); line-height: 1.0; letter-spacing: -0.022em;
     }
-    .contact p { margin: 22px auto 38px; max-width: 46ch; color: var(--ink-dim); font-size: 17px; }
+    .contact h2 em {
+      font-style: italic; font-weight: 320;
+      background: linear-gradient(96deg, var(--ink) 18%, var(--cool) 78%, var(--warm) 110%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .contact p { margin: 26px auto 40px; max-width: 44ch; color: var(--ink-dim); font-size: 16.5px; line-height: 1.6; }
     .mailto {
-      font-size: clamp(18px, 3vw, 26px);
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid var(--line-strong);
-      padding-bottom: 4px;
-      transition: border-color 0.25s ease, color 0.25s ease;
+      display: inline-block;
+      font-family: var(--serif); font-weight: 380;
+      font-size: clamp(20px, 3.2vw, 30px); letter-spacing: -0.01em;
+      color: var(--ink); text-decoration: none;
+      padding-bottom: 6px; border-bottom: 1px solid var(--line);
+      transition: border-color .3s ease, color .3s ease;
     }
-    .mailto:hover { border-color: var(--accent); color: var(--accent); }
+    .mailto:hover { color: var(--cool); border-color: var(--cool); }
 
-    footer {
-      margin-top: 110px;
-      border-top: 1px solid var(--line);
-      padding: 34px 0;
-    }
+    footer { margin-top: clamp(72px, 10vw, 120px); border-top: 1px solid var(--line); padding: 36px 0; }
     .foot {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      color: var(--ink-faint);
-      font-size: 13px;
-      letter-spacing: 0.04em;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; flex-wrap: wrap;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--ink-faint);
     }
-    .foot .disc { max-width: 62ch; line-height: 1.5; }
+    .foot .disc { max-width: 64ch; line-height: 1.7; }
 
-    /* Reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s cubic-bezier(.22,.61,.36,1), transform .8s cubic-bezier(.22,.61,.36,1); }
     .reveal.in { opacity: 1; transform: none; }
 
-    @media (max-width: 860px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-      .hero { padding: 96px 0 72px; }
-      .sec-head p { display: none; }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .panel { order: 2; }
     }
-    @media (max-width: 540px) {
-      .grid { grid-template-columns: 1fr; }
-      .nav-cta { display: none; }
+    @media (max-width: 620px) {
+      .wrap { padding: 0 22px; }
+      .row { grid-template-columns: 40px 1fr; gap: 14px; row-gap: 6px; }
+      .row .sct { grid-column: 2; text-align: left; }
+      .row .go { display: none; }
+      .nav-cta { padding: 9px 14px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
+      .panel-head .live .pulse { animation: none; }
       html { scroll-behavior: auto; }
     }
   </style>
 </head>
 <body>
   <div class="field"></div>
-  <div class="grid-overlay"></div>
+  <div class="grain"></div>
 
   <header>
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Asymmetry Investments home">
-        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <path d="M16 5 L27 27 L5 27 Z" stroke="#e8ecf4" stroke-width="1.6" />
-          <path d="M16 5 L16 27" stroke="#6ea8ff" stroke-width="1.6" />
+        <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M4 26 Q20 25 28 6" stroke="#ECE9E2" stroke-width="1.7" stroke-linecap="round"/>
+          <circle cx="28" cy="6" r="2.4" fill="#92c6ff"/>
         </svg>
-        Asymmetry
+        <span class="wordmark">Asymmetry<em>&nbsp;Investments</em></span>
       </a>
-      <a class="nav-cta" href="#contact">Get in touch</a>
+      <a class="nav-cta" href="#contact">Enquire <span class="ar">→</span></a>
     </div>
   </header>
 
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <div class="wrap">
-        <span class="eyebrow reveal"><span class="dot"></span>Asymmetry Investments</span>
-        <h1 class="reveal">Exposure to <span class="grad">the future.</span></h1>
-        <p class="lede reveal">
-          An investment vehicle for the companies redefining the next era — space, money,
-          and intelligent machines. We build the funds and strategies that put the future
-          within reach.
-        </p>
-        <div class="hero-actions reveal">
-          <a class="btn btn-primary" href="#contact">Get in touch
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a class="btn btn-ghost" href="#portfolio">View portfolio</a>
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow reveal"><span class="dot"></span><span class="mono">Private Investment Vehicle</span></span>
+          <h1 class="reveal">Exposure to <em>the future.</em></h1>
+          <p class="lede reveal">
+            We back the companies redefining space, money, and intelligent machines —
+            positioned for bounded downside and asymmetric upside.
+          </p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#contact">Enquire <span class="ar">→</span></a>
+            <a class="btn btn-ghost" href="#holdings">View holdings</a>
+          </div>
+        </div>
+
+        <!-- Convexity panel -->
+        <div class="panel reveal" aria-hidden="true">
+          <div class="panel-head">
+            <span class="mono">Asymmetric Payoff</span>
+            <span class="mono live"><span class="pulse"></span>Convexity</span>
+          </div>
+          <div class="canvas-frame">
+            <canvas id="curve"></canvas>
+            <span class="axis dl">Capped downside</span>
+            <span class="axis ur">Uncapped upside ↗</span>
+          </div>
+          <div class="panel-foot">Bounded loss. <b>Unbounded gain.</b></div>
         </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section class="sec" id="portfolio">
+    <!-- HOLDINGS LEDGER -->
+    <section class="sec" id="holdings">
       <div class="wrap">
         <div class="sec-head reveal">
-          <h2>Select early positions</h2>
-          <p>Held via Asymmetry</p>
+          <h2>Select holdings</h2>
+          <span class="mono">Held via Asymmetry · 06</span>
         </div>
 
-        <div class="grid">
-          <!-- SpaceX -->
-          <article class="card reveal">
-            <div class="logo">
-              <svg viewBox="0 0 220 26" role="img" aria-label="SpaceX">
-                <text x="0" y="20" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="currentColor">SPACE</text>
-                <text x="118" y="20" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="currentColor" font-style="italic">X</text>
-              </svg>
-            </div>
-            <div class="meta">
-              <div class="name">SpaceX</div>
-              <div class="desc">Space access &amp; orbital infrastructure.</div>
-            </div>
-          </article>
-
-          <!-- Tether -->
-          <article class="card reveal">
-            <div class="logo">
-              <svg viewBox="0 0 200 26" role="img" aria-label="Tether">
-                <circle cx="13" cy="13" r="12" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M13 6.5v13M8.5 9.2h9M13 9.2v0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <text x="34" y="20" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="600" letter-spacing="1.5" fill="currentColor">Tether</text>
-              </svg>
-            </div>
-            <div class="meta">
-              <div class="name">Tether</div>
-              <div class="desc">Digital dollars &amp; stablecoin rails.</div>
-            </div>
-          </article>
-
-          <!-- Revolut -->
-          <article class="card reveal">
-            <div class="logo">
-              <svg viewBox="0 0 200 26" role="img" aria-label="Revolut">
-                <text x="0" y="20" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="700" letter-spacing="0.5" fill="currentColor">Revolut</text>
-              </svg>
-            </div>
-            <div class="meta">
-              <div class="name">Revolut</div>
-              <div class="desc">Global consumer finance super-app.</div>
-            </div>
-          </article>
-
-          <!-- Monzo -->
-          <article class="card reveal">
-            <div class="logo">
-              <svg viewBox="0 0 200 26" role="img" aria-label="Monzo">
-                <text x="0" y="20" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" letter-spacing="0.5" fill="currentColor">monzo</text>
-              </svg>
-            </div>
-            <div class="meta">
-              <div class="name">Monzo</div>
-              <div class="desc">Digital-native retail banking.</div>
-            </div>
-          </article>
-
-          <!-- Figure -->
-          <article class="card reveal">
-            <div class="logo">
-              <svg viewBox="0 0 220 26" role="img" aria-label="Figure">
-                <text x="0" y="20" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="500" letter-spacing="4" fill="currentColor">FIGURE</text>
-              </svg>
-            </div>
-            <div class="meta">
-              <div class="name">Figure</div>
-              <div class="desc">Humanoid robotics &amp; embodied AI.</div>
-            </div>
-          </article>
-
-          <!-- Mercury -->
-          <article class="card reveal">
-            <div class="logo">
-              <svg viewBox="0 0 220 26" role="img" aria-label="Mercury">
-                <circle cx="12" cy="13" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M12 20v4M9 23h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <text x="30" y="20" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" letter-spacing="0.5" fill="currentColor">Mercury</text>
-              </svg>
-            </div>
-            <div class="meta">
-              <div class="name">Mercury</div>
-              <div class="desc">Banking built for technology companies.</div>
-            </div>
-          </article>
-        </div>
+        <ol class="ledger">
+          <li><a class="row reveal" href="#contact">
+            <span class="idx">01</span><span class="co">SpaceX</span>
+            <span class="sct">Orbital infrastructure</span><span class="go">↗</span>
+          </a></li>
+          <li><a class="row reveal" href="#contact">
+            <span class="idx">02</span><span class="co">Tether</span>
+            <span class="sct">Digital dollar rails</span><span class="go">↗</span>
+          </a></li>
+          <li><a class="row reveal" href="#contact">
+            <span class="idx">03</span><span class="co">Revolut</span>
+            <span class="sct">Global finance super-app</span><span class="go">↗</span>
+          </a></li>
+          <li><a class="row reveal" href="#contact">
+            <span class="idx">04</span><span class="co">Monzo</span>
+            <span class="sct">Digital-native banking</span><span class="go">↗</span>
+          </a></li>
+          <li><a class="row reveal" href="#contact">
+            <span class="idx">05</span><span class="co">Figure</span>
+            <span class="sct">Humanoid robotics</span><span class="go">↗</span>
+          </a></li>
+          <li><a class="row reveal" href="#contact">
+            <span class="idx">06</span><span class="co">Mercury</span>
+            <span class="sct">Banking for technology</span><span class="go">↗</span>
+          </a></li>
+        </ol>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section class="contact" id="contact">
       <div class="wrap">
-        <h2 class="reveal">Invest in what comes next.</h2>
+        <span class="kicker mono reveal">By introduction</span>
+        <h2 class="reveal">Invest in <em>what comes next.</em></h2>
         <p class="reveal">
-          Asymmetry partners with a select group of investors. For access to current and
-          future strategies, reach out directly.
+          Asymmetry partners with a select group of investors. For access to current
+          and future strategies, reach out directly.
         </p>
         <a class="mailto reveal" href="mailto:invest@asymmetryinvestments.com">invest@asymmetryinvestments.com</a>
       </div>
@@ -451,26 +393,93 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Scroll reveal
+    /* Scroll reveal */
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.14 });
     document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = Math.min(i * 45, 240) + 'ms';
+      el.style.transitionDelay = Math.min(i * 55, 320) + 'ms';
       io.observe(el);
     });
 
-    // Pointer-tracked glow on portfolio cards
-    document.querySelectorAll('.card').forEach((card) => {
-      card.addEventListener('pointermove', (ev) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', ((ev.clientX - r.left) / r.width * 100) + '%');
-        card.style.setProperty('--my', ((ev.clientY - r.top) / r.height * 100) + '%');
-      });
-    });
+    /* Convexity curve — bounded downside, accelerating upside */
+    const canvas = document.getElementById('curve');
+    const ctx = canvas.getContext('2d');
+    let W = 0, H = 0, dpr = 1;
+
+    function resize() {
+      const r = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width; H = r.height;
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    // Normalized payoff: gentle floor on the left, accelerating rise on the right.
+    function payoff(t) {
+      const floor = 0.10 * (1 - t);        // slight, bounded decline through the downside
+      const upside = Math.pow(Math.max(t - 0.18, 0) / 0.82, 2.35); // convex acceleration
+      return Math.min(floor + upside * 0.96, 1);
+    }
+    function px(t) { const padL = 14, padR = 14; return padL + t * (W - padL - padR); }
+    function py(v) { const padT = 16, padB = 22; return (H - padB) - v * (H - padT - padB); }
+
+    function draw(progress) {
+      ctx.clearRect(0, 0, W, H);
+
+      // grid
+      ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(236,233,226,0.05)';
+      for (let i = 1; i < 6; i++) { const x = px(i / 6); ctx.beginPath(); ctx.moveTo(x, py(0)); ctx.lineTo(x, py(1)); ctx.stroke(); }
+      for (let i = 1; i < 4; i++) { const y = py(i / 4); ctx.beginPath(); ctx.moveTo(px(0), y); ctx.lineTo(px(1), y); ctx.stroke(); }
+
+      const N = 160;
+      const last = Math.max(1, Math.floor(N * progress));
+
+      // area fill
+      const fill = ctx.createLinearGradient(0, py(1), 0, py(0));
+      fill.addColorStop(0, 'rgba(146,198,255,0.16)');
+      fill.addColorStop(1, 'rgba(146,198,255,0)');
+      ctx.beginPath(); ctx.moveTo(px(0), py(0));
+      for (let i = 0; i <= last; i++) { const t = i / N; ctx.lineTo(px(t), py(payoff(t))); }
+      ctx.lineTo(px(last / N), py(0)); ctx.closePath();
+      ctx.fillStyle = fill; ctx.fill();
+
+      // curve stroke (cool -> warm)
+      const stroke = ctx.createLinearGradient(px(0), 0, px(1), 0);
+      stroke.addColorStop(0, '#7fb0ff'); stroke.addColorStop(1, '#ffd7a3');
+      ctx.beginPath();
+      for (let i = 0; i <= last; i++) { const t = i / N; const x = px(t), y = py(payoff(t)); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+      ctx.strokeStyle = stroke; ctx.lineWidth = 2; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      ctx.shadowColor = 'rgba(146,198,255,0.5)'; ctx.shadowBlur = 14; ctx.stroke(); ctx.shadowBlur = 0;
+
+      // tracer
+      const tt = last / N; const tx = px(tt), ty = py(payoff(tt));
+      ctx.beginPath(); ctx.arc(tx, ty, 3.6, 0, Math.PI * 2);
+      ctx.fillStyle = '#fff'; ctx.shadowColor = 'rgba(146,198,255,0.9)'; ctx.shadowBlur = 16; ctx.fill(); ctx.shadowBlur = 0;
+    }
+
+    let raf = null, start = null;
+    function loop(ts) {
+      if (!start) start = ts;
+      const cycle = 5200;
+      const p = ((ts - start) % cycle) / cycle;
+      // ease-in-out for the sweep, then hold briefly full
+      const eased = p < 0.82 ? (p / 0.82) : 1;
+      const smooth = eased < 0.5 ? 2 * eased * eased : 1 - Math.pow(-2 * eased + 2, 2) / 2;
+      draw(smooth);
+      raf = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      resize();
+      if (raf) cancelAnimationFrame(raf);
+      if (reduceMotion) { draw(1); } else { start = null; raf = requestAnimationFrame(loop); }
+    }
+    window.addEventListener('resize', () => { resize(); if (reduceMotion) draw(1); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(init); else init();
   </script>
 </body>
 </html>
